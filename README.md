@@ -149,6 +149,8 @@ Olarve, J. S. L. (2026). MicroMeasure: A web-based image analysis and measuremen
 i-Nano Research Facility, De La Salle University Manila.  
 DOI: (to be assigned)
 
+This project now includes a citation metadata file: [CITATION.cff](CITATION.cff)
+
 ---
 
 ## Disclaimer
