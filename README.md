@@ -2,11 +2,10 @@
 
 MicroMeasure is a browser-based image analysis and measurement tool for scientific images. It supports calibrated length, angle, and area measurements together with particle and hole analysis directly in the browser.
 
-## Live Site
+## Links
 
-GitHub Pages URL:
-
-https://jamesolarve.github.io/micromeasure/
+- Live App: https://jamesolarve.github.io/micromeasure/
+- Project Page: https://inanolab.com/tools/micromeasure
 
 ## Features
 
