@@ -492,7 +492,7 @@
         </div>
         <div id="lengthExportRow" class="flex gap-2 mt-2 hidden">
          <button id="copyLengthTSVBtn" class="btn-secondary px-3 py-1.5 rounded-lg text-xs flex-1" disabled>Copy TSV</button>
-         <button id="downloadLengthTSVBtn" class="btn-secondary px-3 py-1.5 rounded-lg text-xs flex-1" disabled>Download TSV</button>
+         <button id="downloadLengthTSVBtn" class="btn-secondary px-3 py-1.5 rounded-lg text-xs flex-1" disabled>Download CSV</button>
         </div>
       </div><!-- Angle Tab -->
       <div id="angleTab" class="tab-content hidden">
@@ -511,7 +511,7 @@
        </div>
        <div id="angleExportRow" class="flex gap-2 mt-2 hidden">
         <button id="copyAngleTSVBtn" class="btn-secondary px-3 py-1.5 rounded-lg text-xs flex-1" disabled>Copy TSV</button>
-        <button id="downloadAngleTSVBtn" class="btn-secondary px-3 py-1.5 rounded-lg text-xs flex-1" disabled>Download TSV</button>
+        <button id="downloadAngleTSVBtn" class="btn-secondary px-3 py-1.5 rounded-lg text-xs flex-1" disabled>Download CSV</button>
        </div>
       </div><!-- Area Tab -->
       <div id="areaTab" class="tab-content hidden">
@@ -535,7 +535,7 @@
       </div>
       <div id="areaExportRow" class="flex gap-2 mt-2 hidden">
        <button id="copyAreaTSVBtn" class="btn-secondary px-3 py-1.5 rounded-lg text-xs flex-1" disabled>Copy TSV</button>
-       <button id="downloadAreaTSVBtn" class="btn-secondary px-3 py-1.5 rounded-lg text-xs flex-1" disabled>Download TSV</button>
+      <button id="downloadAreaTSVBtn" class="btn-secondary px-3 py-1.5 rounded-lg text-xs flex-1" disabled>Download CSV</button>
       </div>
       </div><!-- Particles Tab -->
       <div id="particlesTab" class="tab-content hidden">
@@ -600,7 +600,7 @@
         </div>
         <div id="particlesExportRow" class="flex gap-2 flex-wrap hidden">
          <button id="copyParticlesTSVBtn" class="btn-secondary px-3 py-1.5 rounded-lg text-xs flex-1 min-w-[90px]" disabled>Copy TSV</button>
-         <button id="downloadParticlesTSVBtn" class="btn-secondary px-3 py-1.5 rounded-lg text-xs flex-1 min-w-[110px]" disabled>Download TSV</button>
+         <button id="downloadParticlesTSVBtn" class="btn-secondary px-3 py-1.5 rounded-lg text-xs flex-1 min-w-[110px]" disabled>Download CSV</button>
         </div>
        </div>
       </div><!-- Holes Tab -->
@@ -666,7 +666,7 @@
         </div>
         <div id="holesExportRow" class="flex gap-2 flex-wrap hidden">
          <button id="copyHolesTSVBtn" class="btn-secondary px-3 py-1.5 rounded-lg text-xs flex-1 min-w-[90px]" disabled>Copy TSV</button>
-         <button id="downloadHolesTSVBtn" class="btn-secondary px-3 py-1.5 rounded-lg text-xs flex-1 min-w-[110px]" disabled>Download TSV</button>
+         <button id="downloadHolesTSVBtn" class="btn-secondary px-3 py-1.5 rounded-lg text-xs flex-1 min-w-[110px]" disabled>Download CSV</button>
         </div>
        </div>
       </div>
@@ -745,7 +745,7 @@
        <li><strong>Load an image</strong> - Click "Load Image" or drag &amp; drop an image file</li>
        <li><strong>Set the scale</strong> - Click "Set Scale", draw a line of known length, then enter the real-world measurement</li>
       <li><strong>Make measurements</strong> - Use the tabs to measure lengths, angles, areas, particles, or holes</li>
-      <li><strong>Export results</strong> - Use the <strong>Copy TSV</strong> / <strong>Download TSV</strong> buttons at the bottom of each measurement tab</li>
+      <li><strong>Export results</strong> - Use the <strong>Copy TSV</strong> / <strong>Download CSV</strong> buttons at the bottom of each measurement tab</li>
       </ol>
      </section><!-- Scale Calibration -->
      <section>
@@ -884,7 +884,7 @@
       <ul class="list-disc list-inside space-y-1 text-slate-300 ml-4">
        <li><strong>Save Image</strong> - Export image with all measurements overlaid (PNG)</li>
          <li><strong>Copy TSV</strong> - Copy the current tab’s data as tab-separated values (paste into spreadsheets)</li>
-         <li><strong>Download TSV</strong> - Download the current tab’s data as a .tsv file</li>
+         <li><strong>Download CSV</strong> - Download the current tab’s data as a .csv file</li>
            <li><strong>Note:</strong> Export buttons appear only when the current tab has at least one measurement/object.</li>
          <li><strong>Reset</strong> - Use the reset control to clear measurements and restart</li>
       </ul>
@@ -3861,7 +3861,7 @@
       updateStatsButtonsVisibility();
     }
 
-    // ========== PER-FEATURE TSV EXPORT ==========
+    // ========== PER-FEATURE EXPORT ==========
     function buildFeatureTSV(type) {
       let tsv = 'Type\tID\tValue_px\tValue_real\tUnit\n';
 
@@ -3906,6 +3906,21 @@
       return tsv;
     }
 
+    function escapeCsvValue(value) {
+      const text = String(value ?? '');
+      if (!/[",\n\r]/.test(text)) return text;
+      return `"${text.replace(/"/g, '""')}"`;
+    }
+
+    function buildFeatureCSV(type) {
+      const tsv = buildFeatureTSV(type);
+      const rows = tsv
+        .trim()
+        .split('\n')
+        .map((line) => line.split('\t').map(escapeCsvValue).join(','));
+      return rows.length ? `${rows.join('\n')}\n` : '';
+    }
+
     async function copyFeatureTSV(type) {
       const tsv = buildFeatureTSV(type);
       const hasRows = tsv.trim().split('\n').length > 1;
@@ -3923,16 +3938,16 @@
       fallbackCopyText(tsv);
     }
 
-    function downloadFeatureTSV(type) {
-      const tsv = buildFeatureTSV(type);
-      const hasRows = tsv.trim().split('\n').length > 1;
+    function downloadFeatureCSV(type) {
+      const csv = buildFeatureCSV(type);
+      const hasRows = csv.trim().split('\n').length > 1;
       if (!hasRows) return;
 
-      const blob = new Blob([tsv], { type: 'text/tab-separated-values;charset=utf-8' });
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `micromeasure_${type}.tsv`;
+      a.download = `micromeasure_${type}.csv`;
       a.click();
       URL.revokeObjectURL(url);
     }
@@ -4187,15 +4202,15 @@
 
     // Per-feature export buttons
     if (elements.copyLengthTSVBtn) elements.copyLengthTSVBtn.addEventListener('click', () => copyFeatureTSV('length'));
-    if (elements.downloadLengthTSVBtn) elements.downloadLengthTSVBtn.addEventListener('click', () => downloadFeatureTSV('length'));
+    if (elements.downloadLengthTSVBtn) elements.downloadLengthTSVBtn.addEventListener('click', () => downloadFeatureCSV('length'));
     if (elements.copyAngleTSVBtn) elements.copyAngleTSVBtn.addEventListener('click', () => copyFeatureTSV('angle'));
-    if (elements.downloadAngleTSVBtn) elements.downloadAngleTSVBtn.addEventListener('click', () => downloadFeatureTSV('angle'));
+    if (elements.downloadAngleTSVBtn) elements.downloadAngleTSVBtn.addEventListener('click', () => downloadFeatureCSV('angle'));
     if (elements.copyAreaTSVBtn) elements.copyAreaTSVBtn.addEventListener('click', () => copyFeatureTSV('area'));
-    if (elements.downloadAreaTSVBtn) elements.downloadAreaTSVBtn.addEventListener('click', () => downloadFeatureTSV('area'));
+    if (elements.downloadAreaTSVBtn) elements.downloadAreaTSVBtn.addEventListener('click', () => downloadFeatureCSV('area'));
     if (elements.copyParticlesTSVBtn) elements.copyParticlesTSVBtn.addEventListener('click', () => copyFeatureTSV('particles'));
-    if (elements.downloadParticlesTSVBtn) elements.downloadParticlesTSVBtn.addEventListener('click', () => downloadFeatureTSV('particles'));
+    if (elements.downloadParticlesTSVBtn) elements.downloadParticlesTSVBtn.addEventListener('click', () => downloadFeatureCSV('particles'));
     if (elements.copyHolesTSVBtn) elements.copyHolesTSVBtn.addEventListener('click', () => copyFeatureTSV('holes'));
-    if (elements.downloadHolesTSVBtn) elements.downloadHolesTSVBtn.addEventListener('click', () => downloadFeatureTSV('holes'));
+    if (elements.downloadHolesTSVBtn) elements.downloadHolesTSVBtn.addEventListener('click', () => downloadFeatureCSV('holes'));
 
     if (elements.clearParticles) elements.clearParticles.addEventListener('click', clearAllParticles);
     if (elements.clearHoles) elements.clearHoles.addEventListener('click', clearAllHoles);
