@@ -54,16 +54,9 @@ Inspired by established tools such as ImageJ, MicroMeasure is optimized for acce
 
 ---
 
-## Methodology
+## 📘 Methodology
 
-MicroMeasure performs quantitative measurements using pixel-to-real-world calibration.
-
-1. A known reference length (e.g., scale bar) is selected by the user
-2. A scaling factor is computed:
-
-	 `scale = real_length / pixel_length`
-
-3. All measurements are converted from pixels to real-world units
+See detailed methodology in [docs/methodology.md](docs/methodology.md)
 
 ---
 
