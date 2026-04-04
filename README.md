@@ -147,9 +147,10 @@ This project is deployed using GitHub Pages and runs entirely in the browser.
 
 ## Citation
 
-Olarve, J. S. L. (2026). MicroMeasure: A web-based image analysis and measurement tool.  
-i-Nano Research Facility, De La Salle University Manila.  
-DOI: (to be assigned)
+If you use MicroMeasure, please cite:
+
+Olarve, J. S. (2026). *MicroMeasure: A Web-Based Image Measurement Tool* (v1.0.1). Zenodo.  
+https://doi.org/10.5281/zenodo.19418862
 
 This project now includes a citation metadata file: [CITATION.cff](CITATION.cff)
 
