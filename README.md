@@ -1,5 +1,7 @@
 # MicroMeasure
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19418862.svg)](https://doi.org/10.5281/zenodo.19418862)
+
 A Web-Based Scientific Image Analysis and Measurement Tool  
 Version: 1.0
 
@@ -150,6 +152,12 @@ i-Nano Research Facility, De La Salle University Manila.
 DOI: (to be assigned)
 
 This project now includes a citation metadata file: [CITATION.cff](CITATION.cff)
+
+---
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
 
 ---
 
