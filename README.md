@@ -3,7 +3,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19418862.svg)](https://doi.org/10.5281/zenodo.19418862)
 
 A Web-Based Scientific Image Analysis and Measurement Tool  
-Version: 1.0
+Version: 1.2.0
 
 Developer: Dr. James Salveo Olarve  
 Affiliation: i-Nano Research Facility, De La Salle University Manila
@@ -149,7 +149,7 @@ This project is deployed using GitHub Pages and runs entirely in the browser.
 
 If you use MicroMeasure, please cite:
 
-Olarve, J. S. (2026). *MicroMeasure: A Web-Based Image Measurement Tool* (v1.0.1). Zenodo.  
+Olarve, J. S. (2026). *MicroMeasure: A Web-Based Image Measurement Tool* (v1.2.0). Zenodo.  
 https://doi.org/10.5281/zenodo.19418862
 
 This project now includes a citation metadata file: [CITATION.cff](CITATION.cff)

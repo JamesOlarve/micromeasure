@@ -80,6 +80,22 @@
       transform: none;
       box-shadow: none;
     }
+
+    .btn-save-image {
+      background: #16a34a;
+      transition: all 0.2s ease;
+    }
+    .btn-save-image:hover {
+      background: #15803d;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
+    }
+    .btn-save-image:disabled {
+      background: #475569;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
     
     .btn-secondary {
       background: var(--accent-secondary);
@@ -401,20 +417,34 @@
      </div>
     </div>
     <div class="flex items-center gap-3">
-     <button id="headerResetBtn" class="btn-danger px-3 py-2 rounded-lg text-sm font-medium flex items-center gap-2" title="Reset MicroMeasure">
+     <button id="homeBtn" class="btn-secondary w-10 h-10 rounded-lg text-sm font-medium inline-flex items-center justify-center" title="Go to i-Nano Research Facility home page" aria-label="Go to i-Nano Research Facility home page">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10.5 12 3l9 7.5"/>
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.25 9.75V21h13.5V9.75"/>
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 21v-6h4.5v6"/>
+      </svg>
+     </button>
+      <button id="loadDemoBtn" class="btn-secondary w-10 h-10 rounded-lg text-sm font-medium inline-flex items-center justify-center" title="Load a demo photo" aria-label="Load a demo photo">
+       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 0 1 2.828 0L16 16"/>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 14l1.586-1.586a2 2 0 0 1 2.828 0L20 14"/>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16v12H4z"/>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.5 10.5h.01"/>
+       </svg>
+      </button>
+     <button id="headerResetBtn" class="btn-danger w-10 h-10 rounded-lg text-sm font-medium inline-flex items-center justify-center" title="Reset MicroMeasure" aria-label="Reset MicroMeasure">
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 12a7.5 7.5 0 0 1 12.78-5.303"/>
        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.5 12a7.5 7.5 0 0 1-12.78 5.303"/>
        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 6.75V3.75h-3"/>
        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 17.25v3h3"/>
       </svg>
-      Reset
      </button>
-    <button id="helpBtn" class="btn-secondary px-3 py-2 rounded-lg text-sm font-medium flex items-center gap-2" title="Documentation">
+    <button id="helpBtn" class="btn-secondary w-10 h-10 rounded-lg text-sm font-medium inline-flex items-center justify-center" title="Documentation" aria-label="Documentation">
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg> Help </button> <button id="saveScreenshot" class="btn-primary px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2" disabled>
+     </svg></button> <button id="saveScreenshot" class="btn-save-image w-10 h-10 rounded-lg text-sm font-medium inline-flex items-center justify-center" title="Save Image" aria-label="Save Image" disabled>
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg> Save Image </button>
+      </svg></button>
     </div>
    </header><!-- Main Content -->
   <div class="flex-1 flex flex-col lg:flex-row gap-4 p-4 overflow-auto"><!-- Left Panel - Image Viewer -->
@@ -711,11 +741,18 @@
      <section>
       <h3 class="text-xl font-bold text-blue-400 mb-3">Web-Based Image Analysis and Measurement Tool</h3>
       <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700 space-y-2">
-        <p><strong>Version:</strong> 1.0</p>
+          <p><strong>Version:</strong> 1.2.0</p>
        <p><strong>Website:</strong> <a href="https://www.inanolab.com/micromeasure.html" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">https://www.inanolab.com/micromeasure.html</a></p>
        <p><strong>Developer / Programmer:</strong> Dr. James Salveo Olarve</p>
        <p><strong>Affiliation:</strong> i-Nano Research Facility, De La Salle University Manila</p>
       </div>
+        </section><!-- Citation Recommendation -->
+        <section>
+        <h3 class="text-lg font-semibold text-white mb-2">Citation Recommendation</h3>
+        <p class="text-slate-300 mb-2">If you use MicroMeasure in academic work:</p>
+        <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+         <p class="text-slate-300 text-sm font-mono leading-relaxed">Olarve, J. S. (2026). MicroMeasure: A Web-Based Image Measurement Tool (v1.2.0). Zenodo. https://doi.org/10.5281/zenodo.19418862</p>
+        </div>
      </section><!-- Overview -->
      <section>
         <h3 class="text-lg font-semibold text-white mb-2">Overview</h3>
@@ -902,14 +939,6 @@
        <li><strong>Mouse Wheel</strong> - Zoom in/out</li>
        <li><strong>Alt + Left Click</strong> - Pan the image</li>
       </ul>
-     </section><!-- Citation Recommendation -->
-     <section>
-      <h3 class="text-lg font-semibold text-white mb-2">Citation Recommendation</h3>
-      <p class="text-slate-300 mb-2">If you use MicroMeasure in academic work:</p>
-      <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
-       <p class="text-slate-300 text-sm font-mono leading-relaxed">Olarve, J. S. L. (2026). MicroMeasure: A web-based image analysis and measurement tool. i-Nano Research Facility, De La Salle University Manila. Retrieved from https://www.inanolab.com/micromeasure.html</p>
-       <p class="text-slate-400 text-xs mt-3 italic">(Updated citation will be provided once DOI is assigned.)</p>
-      </div>
      </section><!-- Disclaimer -->
      <section>
       <h3 class="text-lg font-semibold text-white mb-2">Disclaimer</h3>
@@ -1026,6 +1055,45 @@
     </div>
    </div>
   </div>
+  <!-- Save Image Confirmation Modal -->
+  <div id="saveImageConfirmModal" class="processing-modal hidden" role="dialog" aria-modal="true" aria-label="Save image confirmation">
+   <div class="processing-content max-w-lg">
+    <h3 class="text-lg font-semibold text-center mb-2">Save Image?</h3>
+    <p class="text-sm text-slate-300 text-center mb-4">
+    This will export the current image as a PNG with all visible measurements and overlays included. Continue to download the image.
+    </p>
+    <div class="flex gap-2">
+     <button id="confirmSaveImageYes" class="btn-primary px-4 py-2 rounded-lg text-sm flex-1">Yes</button>
+     <button id="confirmSaveImageNo" class="btn-secondary px-4 py-2 rounded-lg text-sm flex-1">No</button>
+    </div>
+   </div>
+  </div>
+  <!-- Home Redirect Confirmation Modal -->
+  <div id="homeConfirmModal" class="processing-modal hidden" role="dialog" aria-modal="true" aria-label="Home page confirmation">
+   <div class="processing-content max-w-lg">
+    <h3 class="text-lg font-semibold text-center mb-2">Go to Home Page?</h3>
+    <p class="text-sm text-slate-300 text-center mb-4">
+    This will redirect you to the i-Nano Research Facility home page at DLSU Manila. Continue to open https://www.inanolab.com/#extras.
+    </p>
+    <div class="flex gap-2">
+     <button id="confirmHomeYes" class="btn-primary px-4 py-2 rounded-lg text-sm flex-1">Yes</button>
+     <button id="confirmHomeNo" class="btn-secondary px-4 py-2 rounded-lg text-sm flex-1">No</button>
+    </div>
+   </div>
+  </div>
+  <!-- Demo Image Confirmation Modal -->
+  <div id="demoImageConfirmModal" class="processing-modal hidden" role="dialog" aria-modal="true" aria-label="Demo image confirmation">
+   <div class="processing-content max-w-lg">
+    <h3 class="text-lg font-semibold text-center mb-2">Load Demo Photo?</h3>
+    <p class="text-sm text-slate-300 text-center mb-4">
+    This will load the bundled sample SEM image so you can try the app without uploading your own file. If you already have a loaded image or measurements, they will be replaced.
+    </p>
+    <div class="flex gap-2">
+     <button id="confirmDemoImageYes" class="btn-primary px-4 py-2 rounded-lg text-sm flex-1">Yes</button>
+     <button id="confirmDemoImageNo" class="btn-secondary px-4 py-2 rounded-lg text-sm flex-1">No</button>
+    </div>
+   </div>
+  </div>
   <script>
     // ========== STATE ==========
     const state = {
@@ -1121,6 +1189,7 @@
       quickStartStep2: document.getElementById('quickStartStep2'),
       quickStartStep3: document.getElementById('quickStartStep3'),
       appTitle: document.getElementById('appTitle'),
+      loadDemoBtn: document.getElementById('loadDemoBtn'),
       headerResetBtn: document.getElementById('headerResetBtn'),
       
       // Tabs
@@ -1231,6 +1300,7 @@
       
       // Save Image
       saveScreenshot: document.getElementById('saveScreenshot'),
+      homeBtn: document.getElementById('homeBtn'),
       
       // Processing modal
       processingModal: document.getElementById('processingModal'),
@@ -1267,7 +1337,16 @@
       downloadHistSvgBtn: document.getElementById('downloadHistSvgBtn'),
       resetConfirmModal: document.getElementById('resetConfirmModal'),
       confirmResetYes: document.getElementById('confirmResetYes'),
-      confirmResetNo: document.getElementById('confirmResetNo')
+      confirmResetNo: document.getElementById('confirmResetNo'),
+      saveImageConfirmModal: document.getElementById('saveImageConfirmModal'),
+      confirmSaveImageYes: document.getElementById('confirmSaveImageYes'),
+      confirmSaveImageNo: document.getElementById('confirmSaveImageNo'),
+      homeConfirmModal: document.getElementById('homeConfirmModal'),
+      confirmHomeYes: document.getElementById('confirmHomeYes'),
+      confirmHomeNo: document.getElementById('confirmHomeNo'),
+      demoImageConfirmModal: document.getElementById('demoImageConfirmModal'),
+      confirmDemoImageYes: document.getElementById('confirmDemoImageYes'),
+      confirmDemoImageNo: document.getElementById('confirmDemoImageNo')
     };
     
     const mainCtx = elements.mainCanvas.getContext('2d');
@@ -1301,56 +1380,67 @@
     }
     
     // ========== IMAGE LOADING ==========
+    function applyLoadedImage(img) {
+      state.image = img;
+      state.imageData = null;
+      
+      elements.mainCanvas.width = img.width;
+      elements.mainCanvas.height = img.height;
+      elements.overlayCanvas.width = img.width;
+      elements.overlayCanvas.height = img.height;
+      
+      elements.imgWidth.textContent = img.width;
+      elements.imgHeight.textContent = img.height;
+      elements.imageDimensions.classList.remove('hidden');
+      elements.fitToView.classList.remove('hidden');
+      document.getElementById('panControls').classList.remove('hidden');
+      
+      elements.noImagePlaceholder.classList.add('hidden');
+      elements.mainCanvas.classList.remove('hidden');
+      elements.overlayCanvas.classList.remove('hidden');
+      
+      elements.setScaleBtn.disabled = false;
+      elements.analyzeParticles.disabled = false;
+      elements.analyzeHoles.disabled = false;
+      elements.selectParticleROI.disabled = false;
+      elements.selectHoleROI.disabled = false;
+
+      // If the user was mid-calibration and loads a new image, reset the
+      // calibration drawing state so auto-start can run reliably.
+      state.isSettingScale = false;
+      state.scalePoints = [];
+      
+      // Reset pan and defer initial fit-to-view for placement
+      state.panX = 0;
+      state.panY = 0;
+      requestAnimationFrame(() => {
+        fitToView();
+        // Auto-start scale setting as soon as an image is loaded
+        // so the user is guided into the calibration step immediately.
+        setScale();
+        drawMainCanvas();
+        drawOverlay();
+        updateGuidance();
+      });
+    }
+
     function loadImage(file) {
       const reader = new FileReader();
       reader.onload = (e) => {
         const img = new Image();
-        img.onload = () => {
-          state.image = img;
-          state.imageData = null;
-          
-          elements.mainCanvas.width = img.width;
-          elements.mainCanvas.height = img.height;
-          elements.overlayCanvas.width = img.width;
-          elements.overlayCanvas.height = img.height;
-          
-          elements.imgWidth.textContent = img.width;
-          elements.imgHeight.textContent = img.height;
-          elements.imageDimensions.classList.remove('hidden');
-          elements.fitToView.classList.remove('hidden');
-          document.getElementById('panControls').classList.remove('hidden');
-          
-          elements.noImagePlaceholder.classList.add('hidden');
-          elements.mainCanvas.classList.remove('hidden');
-          elements.overlayCanvas.classList.remove('hidden');
-          
-          elements.setScaleBtn.disabled = false;
-          elements.analyzeParticles.disabled = false;
-          elements.analyzeHoles.disabled = false;
-          elements.selectParticleROI.disabled = false;
-          elements.selectHoleROI.disabled = false;
-
-          // If the user was mid-calibration and loads a new image, reset the
-          // calibration drawing state so auto-start can run reliably.
-          state.isSettingScale = false;
-          state.scalePoints = [];
-          
-          // Reset pan and defer initial fit-to-view for placement
-          state.panX = 0;
-          state.panY = 0;
-          requestAnimationFrame(() => {
-            fitToView();
-            // Auto-start scale setting as soon as an image is loaded
-            // so the user is guided into the calibration step immediately.
-            setScale();
-            drawMainCanvas();
-            drawOverlay();
-            updateGuidance();
-          });
-        };
+        img.onload = () => applyLoadedImage(img);
         img.src = e.target.result;
       };
       reader.readAsDataURL(file);
+    }
+
+    function loadDemoImage() {
+      const img = new Image();
+      img.onload = () => {
+        resetToStart();
+        applyLoadedImage(img);
+      };
+      img.src = 'data/sample-sem.jpg';
     }
     
     function fitToView() {
@@ -4111,6 +4201,40 @@
       if (!elements.resetConfirmModal) return;
       elements.resetConfirmModal.classList.add('hidden');
     }
+
+    function openSaveImageConfirm() {
+      if (!elements.saveImageConfirmModal || elements.saveScreenshot.disabled) return;
+      elements.saveImageConfirmModal.classList.remove('hidden');
+    }
+
+    function closeSaveImageConfirm() {
+      if (!elements.saveImageConfirmModal) return;
+      elements.saveImageConfirmModal.classList.add('hidden');
+    }
+
+    function openHomeConfirm() {
+      if (!elements.homeConfirmModal) return;
+      elements.homeConfirmModal.classList.remove('hidden');
+    }
+
+    function closeHomeConfirm() {
+      if (!elements.homeConfirmModal) return;
+      elements.homeConfirmModal.classList.add('hidden');
+    }
+
+    function openDemoImageConfirm() {
+      if (!elements.demoImageConfirmModal) return;
+      elements.demoImageConfirmModal.classList.remove('hidden');
+    }
+
+    function closeDemoImageConfirm() {
+      if (!elements.demoImageConfirmModal) return;
+      elements.demoImageConfirmModal.classList.add('hidden');
+    }
+
+    function goToFacilityHomePage() {
+      window.location.href = 'https://www.inanolab.com/#extras';
+    }
     
     // ========== EVENT LISTENERS ==========
     elements.imageInput.addEventListener('change', (e) => {
@@ -4191,7 +4315,9 @@
     elements.clearParticleROI.addEventListener('click', () => clearROI('particles'));
     elements.selectHoleROI.addEventListener('click', () => startROISelection('holes'));
     elements.clearHoleROI.addEventListener('click', () => clearROI('holes'));
-    elements.saveScreenshot.addEventListener('click', saveScreenshot);
+    elements.saveScreenshot.addEventListener('click', openSaveImageConfirm);
+    if (elements.homeBtn) elements.homeBtn.addEventListener('click', openHomeConfirm);
+    if (elements.loadDemoBtn) elements.loadDemoBtn.addEventListener('click', openDemoImageConfirm);
 
     // Per-feature export buttons
     if (elements.copyLengthTSVBtn) elements.copyLengthTSVBtn.addEventListener('click', () => copyFeatureTSV('length'));
@@ -4218,6 +4344,36 @@
     if (elements.resetConfirmModal) {
       elements.resetConfirmModal.addEventListener('click', (e) => {
         if (e.target === elements.resetConfirmModal) closeResetConfirm();
+      });
+    }
+    if (elements.confirmSaveImageNo) elements.confirmSaveImageNo.addEventListener('click', closeSaveImageConfirm);
+    if (elements.confirmSaveImageYes) elements.confirmSaveImageYes.addEventListener('click', () => {
+      closeSaveImageConfirm();
+      saveScreenshot();
+    });
+    if (elements.saveImageConfirmModal) {
+      elements.saveImageConfirmModal.addEventListener('click', (e) => {
+        if (e.target === elements.saveImageConfirmModal) closeSaveImageConfirm();
+      });
+    }
+    if (elements.confirmHomeNo) elements.confirmHomeNo.addEventListener('click', closeHomeConfirm);
+    if (elements.confirmHomeYes) elements.confirmHomeYes.addEventListener('click', () => {
+      closeHomeConfirm();
+      goToFacilityHomePage();
+    });
+    if (elements.homeConfirmModal) {
+      elements.homeConfirmModal.addEventListener('click', (e) => {
+        if (e.target === elements.homeConfirmModal) closeHomeConfirm();
+      });
+    }
+    if (elements.confirmDemoImageNo) elements.confirmDemoImageNo.addEventListener('click', closeDemoImageConfirm);
+    if (elements.confirmDemoImageYes) elements.confirmDemoImageYes.addEventListener('click', () => {
+      closeDemoImageConfirm();
+      loadDemoImage();
+    });
+    if (elements.demoImageConfirmModal) {
+      elements.demoImageConfirmModal.addEventListener('click', (e) => {
+        if (e.target === elements.demoImageConfirmModal) closeDemoImageConfirm();
       });
     }
     
