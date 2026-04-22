@@ -9,7 +9,7 @@ Developer: Dr. James Salveo Olarve
 Affiliation: i-Nano Research Facility, De La Salle University Manila
 
 Live App: https://jamesolarve.github.io/micromeasure/  
-Project Page: https://inanolab.com/tools/micromeasure
+Project Page: https://inanolab.com/micromeasure.html
 
 ![MicroMeasure application screenshot](micromeasure.png)
 
